@@ -23,31 +23,31 @@ export default function RegisterPage() {
           <div className="mx-auto mb-4">
             <Logo />
           </div>
-          <CardTitle className="text-3xl font-headline">Create an Account</CardTitle>
-          <CardDescription>Enter your information to get started with TrainFlow</CardDescription>
+          <CardTitle className="text-3xl font-headline">Crie uma Conta</CardTitle>
+          <CardDescription>Insira suas informações para começar a usar o TrainFlow</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleRegister} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">Nome</Label>
               <Input id="name" type="text" placeholder="Jane Doe" required />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="m@example.com" required />
+              <Label htmlFor="email">E-mail</Label>
+              <Input id="email" type="email" placeholder="m@exemplo.com" required />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Senha</Label>
               <Input id="password" type="password" required />
             </div>
             <Button type="submit" className="w-full">
-              Create Account
+              Criar Conta
             </Button>
           </form>
           <div className="mt-4 text-center text-sm">
-            Already have an account?{' '}
+            Já tem uma conta?{' '}
             <Link href="/" className="underline">
-              Sign in
+              Entrar
             </Link>
           </div>
         </CardContent>

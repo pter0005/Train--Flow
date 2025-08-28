@@ -13,16 +13,16 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const SuggestExerciseInputSchema = z.object({
-  goals: z.string().describe('The fitness goals of the student.'),
-  restrictions: z.string().describe('Any physical restrictions or limitations of the student.'),
-  performanceData: z.string().describe('Historical workout performance data of the student.'),
-  exerciseLibrary: z.string().describe('A list of possible exercises')
+  goals: z.string().describe('Os objetivos de fitness do aluno.'),
+  restrictions: z.string().describe('Quaisquer restrições físicas ou limitações do aluno.'),
+  performanceData: z.string().describe('Dados históricos de desempenho de treinos do aluno.'),
+  exerciseLibrary: z.string().describe('Uma lista de exercícios possíveis')
 });
 export type SuggestExerciseInput = z.infer<typeof SuggestExerciseInputSchema>;
 
 const SuggestExerciseOutputSchema = z.object({
-  suggestedExercises: z.string().describe('A list of exercise suggestions tailored to the student.'),
-  reasoning: z.string().describe('The AI reasoning behind the exercise suggestions.'),
+  suggestedExercises: z.string().describe('Uma lista de sugestões de exercícios adaptados ao aluno.'),
+  reasoning: z.string().describe('O raciocínio da IA por trás das sugestões de exercícios.'),
 });
 export type SuggestExerciseOutput = z.infer<typeof SuggestExerciseOutputSchema>;
 
@@ -34,18 +34,18 @@ const prompt = ai.definePrompt({
   name: 'suggestExercisePrompt',
   input: {schema: SuggestExerciseInputSchema},
   output: {schema: SuggestExerciseOutputSchema},
-  prompt: `You are a personal trainer AI assistant.
+  prompt: `Você é um assistente de IA para personal trainer.
 
-You will suggest exercises based on the student's goals, restrictions, and past performance.
+Você sugerirá exercícios com base nos objetivos, restrições e desempenho anterior do aluno.
 
-Consider the following information about the student:
+Considere as seguintes informações sobre o aluno:
 
-Goals: {{{goals}}}
-Restrictions: {{{restrictions}}}
-Performance Data: {{{performanceData}}}
-Exercise Library: {{{exerciseLibrary}}}
+Objetivos: {{{goals}}}
+Restrições: {{{restrictions}}}
+Dados de Desempenho: {{{performanceData}}}
+Biblioteca de Exercícios: {{{exerciseLibrary}}}
 
-Suggest exercises tailored to the student and explain your reasoning.`,
+Sugira exercícios adaptados ao aluno e explique seu raciocínio.`,
 });
 
 const suggestExerciseFlow = ai.defineFlow(

@@ -10,11 +10,13 @@ import { CheckCircle2 } from 'lucide-react';
 export default function SchedulePage() {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
 
+  const formattedDate = date ? new Intl.DateTimeFormat('pt-BR', { weekday: 'long', month: 'long', day: 'numeric' }).format(date) : '...';
+
   return (
     <>
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold tracking-tight font-headline md:text-3xl">
-          Schedule
+          Agenda
         </h1>
       </div>
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -37,9 +39,8 @@ export default function SchedulePage() {
         <div className="lg:col-span-1">
           <Card>
             <CardHeader>
-              <CardTitle className="font-headline">
-                Workouts for{' '}
-                {date ? date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) : '...'}
+              <CardTitle className="font-headline capitalize">
+                Treinos para {formattedDate}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -47,33 +48,33 @@ export default function SchedulePage() {
                 <div className="flex justify-between items-start">
                     <div>
                         <p className="font-semibold">Jane Doe</p>
-                        <p className="text-sm text-muted-foreground">Full Body Workout</p>
+                        <p className="text-sm text-muted-foreground">Treino Full Body</p>
                     </div>
-                    <Badge variant="default">Completed</Badge>
+                    <Badge variant="default">Concluído</Badge>
                 </div>
-                 <Button variant="outline" size="sm" className="mt-4 w-full">View Details</Button>
+                 <Button variant="outline" size="sm" className="mt-4 w-full">Ver Detalhes</Button>
               </div>
               <div className="p-4 rounded-lg border bg-card">
                  <div className="flex justify-between items-start">
                     <div>
                         <p className="font-semibold">John Smith</p>
-                        <p className="text-sm text-muted-foreground">Cardio Day</p>
+                        <p className="text-sm text-muted-foreground">Dia de Cardio</p>
                     </div>
-                    <Badge variant="destructive">Missed</Badge>
+                    <Badge variant="destructive">Faltou</Badge>
                 </div>
-                 <Button variant="outline" size="sm" className="mt-4 w-full">View Details</Button>
+                 <Button variant="outline" size="sm" className="mt-4 w-full">Ver Detalhes</Button>
               </div>
               <div className="p-4 rounded-lg border bg-card">
                  <div className="flex justify-between items-start">
                     <div>
                         <p className="font-semibold">Mike Johnson</p>
-                        <p className="text-sm text-muted-foreground">Leg Day</p>
+                        <p className="text-sm text-muted-foreground">Dia de Perna</p>
                     </div>
-                    <Badge variant="secondary">Upcoming</Badge>
+                    <Badge variant="secondary">Próximo</Badge>
                 </div>
                  <Button size="sm" className="mt-4 w-full">
                     <CheckCircle2 className="mr-2 h-4 w-4"/>
-                    Mark as Complete
+                    Marcar como Concluído
                  </Button>
               </div>
             </CardContent>

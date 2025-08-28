@@ -10,10 +10,10 @@ export default function StudentsPage() {
     <>
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold tracking-tight font-headline md:text-3xl">
-          Students
+          Alunos
         </h1>
         <Button>
-          <PlusCircle className="mr-2 h-4 w-4" /> Add Student
+          <PlusCircle className="mr-2 h-4 w-4" /> Adicionar Aluno
         </Button>
       </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -32,11 +32,11 @@ export default function StudentsPage() {
             <CardContent>
               <div className="space-y-2">
                 <div>
-                  <h4 className="text-sm font-medium">Goals</h4>
+                  <h4 className="text-sm font-medium">Objetivos</h4>
                   <p className="text-sm text-muted-foreground truncate">{student.goals}</p>
                 </div>
                 <Button asChild variant="secondary" className="w-full mt-4">
-                  <Link href={`/dashboard/students/${student.id}`}>View Profile</Link>
+                  <Link href={`/dashboard/students/${student.id}`}>Ver Perfil</Link>
                 </Button>
               </div>
             </CardContent>

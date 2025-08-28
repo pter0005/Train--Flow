@@ -26,10 +26,10 @@ import {
 import { Logo } from '@/components/logo';
 
 const navItems = [
-  { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { href: '/dashboard/students', icon: Users, label: 'Students' },
-  { href: '/dashboard/exercises', icon: Dumbbell, label: 'Exercises' },
-  { href: '/dashboard/schedule', icon: CalendarDays, label: 'Schedule' },
+  { href: '/dashboard', icon: LayoutDashboard, label: 'Painel' },
+  { href: '/dashboard/students', icon: Users, label: 'Alunos' },
+  { href: '/dashboard/exercises', icon: Dumbbell, label: 'Exercícios' },
+  { href: '/dashboard/schedule', icon: CalendarDays, label: 'Agenda' },
 ];
 
 export default function DashboardLayout({
@@ -68,7 +68,7 @@ export default function DashboardLayout({
             </Link>
             <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
               <Bell className="h-4 w-4" />
-              <span className="sr-only">Toggle notifications</span>
+              <span className="sr-only">Alternar notificações</span>
             </Button>
           </div>
           <div className="flex-1">
@@ -82,7 +82,7 @@ export default function DashboardLayout({
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="shrink-0 md:hidden">
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle navigation menu</span>
+                <span className="sr-only">Alternar menu de navegação</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
@@ -106,16 +106,16 @@ export default function DashboardLayout({
                    <AvatarImage src="https://picsum.photos/id/237/200/200" alt="User" data-ai-hint="person avatar"/>
                    <AvatarFallback>PT</AvatarFallback>
                 </Avatar>
-                <span className="sr-only">Toggle user menu</span>
+                <span className="sr-only">Alternar menu de usuário</span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuLabel>Minha Conta</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
+              <DropdownMenuItem>Configurações</DropdownMenuItem>
+              <DropdownMenuItem>Suporte</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              <DropdownMenuItem>Sair</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>

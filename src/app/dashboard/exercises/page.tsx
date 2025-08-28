@@ -23,12 +23,12 @@ export default function ExercisesPage() {
     <>
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold tracking-tight font-headline md:text-3xl">
-          Exercise Library
+          Biblioteca de Exercícios
         </h1>
         <div className="flex items-center gap-2">
           <Select>
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Filter by muscle" />
+              <SelectValue placeholder="Filtrar por músculo" />
             </SelectTrigger>
             <SelectContent>
               {muscleGroups.map(group => (
@@ -39,28 +39,28 @@ export default function ExercisesPage() {
           <Dialog>
             <DialogTrigger asChild>
               <Button>
-                <PlusCircle className="mr-2 h-4 w-4" /> Add Exercise
+                <PlusCircle className="mr-2 h-4 w-4" /> Adicionar Exercício
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
-                <DialogTitle className="font-headline">Add New Exercise</DialogTitle>
+                <DialogTitle className="font-headline">Adicionar Novo Exercício</DialogTitle>
               </DialogHeader>
               <div className="grid gap-4 py-4">
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="name" className="text-right">Name</Label>
+                  <Label htmlFor="name" className="text-right">Nome</Label>
                   <Input id="name" className="col-span-3" />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="muscle-group" className="text-right">Muscle Group</Label>
+                  <Label htmlFor="muscle-group" className="text-right">Grupo Muscular</Label>
                   <Input id="muscle-group" className="col-span-3" />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="instructions" className="text-right">Instructions</Label>
+                  <Label htmlFor="instructions" className="text-right">Instruções</Label>
                   <Textarea id="instructions" className="col-span-3" />
                 </div>
               </div>
-              <Button type="submit">Save Exercise</Button>
+              <Button type="submit">Salvar Exercício</Button>
             </DialogContent>
           </Dialog>
         </div>
@@ -88,7 +88,7 @@ export default function ExercisesPage() {
               </CardDescription>
             </CardContent>
             <CardFooter className="p-4 pt-0">
-               <Button variant="outline" className="w-full">View Details</Button>
+               <Button variant="outline" className="w-full">Ver Detalhes</Button>
             </CardFooter>
           </Card>
         ))}

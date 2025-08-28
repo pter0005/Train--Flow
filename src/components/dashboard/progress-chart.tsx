@@ -23,18 +23,18 @@ type ProgressChartProps = {
 
 export default function ProgressChart({ data }: ProgressChartProps) {
   const chartData = data.map(m => ({
-    date: new Date(m.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+    date: new Date(m.date).toLocaleDateString('pt-BR', { month: 'short', day: 'numeric' }),
     weight: m.weight,
     bodyFat: m.bodyFat,
   }));
 
   const chartConfig = {
     weight: {
-      label: 'Weight (kg)',
+      label: 'Peso (kg)',
       color: 'hsl(var(--primary))',
     },
     bodyFat: {
-      label: 'Body Fat (%)',
+      label: 'Gordura Corporal (%)',
       color: 'hsl(var(--accent))',
     },
   };
@@ -42,8 +42,8 @@ export default function ProgressChart({ data }: ProgressChartProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-headline">Progress Over Time</CardTitle>
-        <CardDescription>Weight and Body Fat Percentage</CardDescription>
+        <CardTitle className="font-headline">Progresso ao Longo do Tempo</CardTitle>
+        <CardDescription>Peso e Percentual de Gordura Corporal</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="h-[250px] w-full">
@@ -81,10 +81,10 @@ export default function ProgressChart({ data }: ProgressChartProps) {
         <div className="flex w-full items-start gap-2 text-sm">
           <div className="grid gap-2">
             <div className="flex items-center gap-2 font-medium leading-none">
-              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+              Tendência de alta de 5.2% este mês <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              Showing total values for the last 6 months
+              Mostrando valores totais dos últimos 6 meses
             </div>
           </div>
         </div>

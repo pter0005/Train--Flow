@@ -35,29 +35,29 @@ export default function StudentDetailPage({ params }: { params: { id: string } }
           </div>
         </div>
         <Button>
-          <Pencil className="mr-2 h-4 w-4" /> Edit Profile
+          <Pencil className="mr-2 h-4 w-4" /> Editar Perfil
         </Button>
       </div>
 
       <Tabs defaultValue="profile" className="mt-6">
         <TabsList>
-          <TabsTrigger value="profile">Profile</TabsTrigger>
-          <TabsTrigger value="training">Training Sheets</TabsTrigger>
-          <TabsTrigger value="assessment">Physical Assessment</TabsTrigger>
+          <TabsTrigger value="profile">Perfil</TabsTrigger>
+          <TabsTrigger value="training">Fichas de Treino</TabsTrigger>
+          <TabsTrigger value="assessment">Avaliação Física</TabsTrigger>
         </TabsList>
         <TabsContent value="profile" className="mt-4">
           <Card>
             <CardContent className="pt-6 grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold">Goals</h3>
+                <h3 className="font-semibold">Objetivos</h3>
                 <p className="text-muted-foreground">{student.goals}</p>
               </div>
               <div>
-                <h3 className="font-semibold">Physical Restrictions</h3>
+                <h3 className="font-semibold">Restrições Físicas</h3>
                 <p className="text-muted-foreground">{student.restrictions}</p>
               </div>
               <div>
-                <h3 className="font-semibold">Contact</h3>
+                <h3 className="font-semibold">Contato</h3>
                 <p className="text-muted-foreground">{student.phone}</p>
               </div>
             </CardContent>
@@ -67,11 +67,11 @@ export default function StudentDetailPage({ params }: { params: { id: string } }
           <Card>
             <CardHeader>
               <div className="flex justify-between items-center">
-                <CardTitle className="font-headline">Training Sheets</CardTitle>
+                <CardTitle className="font-headline">Fichas de Treino</CardTitle>
                 <AiExerciseSuggester student={student} exercises={mockExercises} />
               </div>
               <CardDescription>
-                Manage and assign workout plans for {student.name}.
+                Gerencie e atribua planos de treino para {student.name}.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -79,9 +79,9 @@ export default function StudentDetailPage({ params }: { params: { id: string } }
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Name</TableHead>
-                      <TableHead>Created At</TableHead>
-                      <TableHead>Actions</TableHead>
+                      <TableHead>Nome</TableHead>
+                      <TableHead>Criado em</TableHead>
+                      <TableHead>Ações</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -99,8 +99,8 @@ export default function StudentDetailPage({ params }: { params: { id: string } }
                 </Table>
               ) : (
                 <div className="text-center py-12">
-                  <p className="text-muted-foreground">No training sheets found.</p>
-                  <p className="text-sm text-muted-foreground">Create a new one using the AI suggester.</p>
+                  <p className="text-muted-foreground">Nenhuma ficha de treino encontrada.</p>
+                  <p className="text-sm text-muted-foreground">Crie uma nova usando o sugestor de IA.</p>
                 </div>
               )}
             </CardContent>
@@ -113,15 +113,15 @@ export default function StudentDetailPage({ params }: { params: { id: string } }
             </div>
              <Card>
                 <CardHeader>
-                    <CardTitle className="font-headline">Latest Measurements</CardTitle>
-                    <CardDescription>Recorded on {new Date(student.measurements[student.measurements.length - 1].date).toLocaleDateString()}</CardDescription>
+                    <CardTitle className="font-headline">Últimas Medidas</CardTitle>
+                    <CardDescription>Registrado em {new Date(student.measurements[student.measurements.length - 1].date).toLocaleDateString()}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                    <div className="flex justify-between"><span>Weight:</span> <span className="font-semibold">{student.measurements[student.measurements.length - 1].weight} kg</span></div>
-                    <div className="flex justify-between"><span>Body Fat:</span> <span className="font-semibold">{student.measurements[student.measurements.length - 1].bodyFat}%</span></div>
-                    <div className="flex justify-between"><span>Chest:</span> <span className="font-semibold">{student.measurements[student.measurements.length - 1].measurements.chest} cm</span></div>
-                     <div className="flex justify-between"><span>Waist:</span> <span className="font-semibold">{student.measurements[student.measurements.length - 1].measurements.waist} cm</span></div>
-                    <Button className="w-full mt-4">Add New Measurement</Button>
+                    <div className="flex justify-between"><span>Peso:</span> <span className="font-semibold">{student.measurements[student.measurements.length - 1].weight} kg</span></div>
+                    <div className="flex justify-between"><span>Gordura Corporal:</span> <span className="font-semibold">{student.measurements[student.measurements.length - 1].bodyFat}%</span></div>
+                    <div className="flex justify-between"><span>Peito:</span> <span className="font-semibold">{student.measurements[student.measurements.length - 1].measurements.chest} cm</span></div>
+                     <div className="flex justify-between"><span>Cintura:</span> <span className="font-semibold">{student.measurements[student.measurements.length - 1].measurements.waist} cm</span></div>
+                    <Button className="w-full mt-4">Adicionar Nova Medida</Button>
                 </CardContent>
              </Card>
            </div>
