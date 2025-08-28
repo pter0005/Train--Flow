@@ -238,7 +238,7 @@ export const mockExercises: Exercise[] = [
     name: 'Levantamento Terra',
     muscleGroup: 'Costas',
     instructions: 'Posicione-se com o meio do pé sob a barra. Incline o quadril e segure a barra. Levante o peito e endireite a parte inferior das costas. Puxe.',
-    imageUrl: 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Deadlift.gif',
+    imageUrl: 'https://i.imgur.com/2JW7vpD.gif',
     videoUrl: 'https://www.youtube.com/watch?v=G4-s5j9n_tM',
   },
    {
