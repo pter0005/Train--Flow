@@ -1,5 +1,8 @@
+'use client'
+
+import { useState } from 'react';
 import { mockStudents, mockExercises } from '@/lib/mock-data';
-import type { Student } from '@/lib/types';
+import type { Student, TrainingSheet } from '@/lib/types';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,11 +14,31 @@ import ProgressChart from '@/components/dashboard/progress-chart';
 import AiExerciseSuggester from '@/components/dashboard/ai-exercise-suggester';
 
 export default function StudentDetailPage({ params }: { params: { id: string } }) {
-  const student = mockStudents.find((s) => s.id === params.id) as Student | undefined;
+  const initialStudent = mockStudents.find((s) => s.id === params.id);
+
+  const [student, setStudent] = useState<Student | undefined>(initialStudent);
 
   if (!student) {
     notFound();
   }
+
+  const handleTrainingSheetCreated = (newSheet: TrainingSheet) => {
+    setStudent(prevStudent => {
+      if (!prevStudent) return prevStudent;
+      
+      const updatedStudent = {
+        ...prevStudent,
+        trainingSheets: [...prevStudent.trainingSheets, newSheet]
+      };
+
+      const studentIndex = mockStudents.findIndex(s => s.id === prevStudent.id);
+      if (studentIndex !== -1) {
+        mockStudents[studentIndex] = updatedStudent;
+      }
+      
+      return updatedStudent;
+    });
+  };
 
   return (
     <>
@@ -68,7 +91,11 @@ export default function StudentDetailPage({ params }: { params: { id: string } }
             <CardHeader>
               <div className="flex justify-between items-center">
                 <CardTitle className="font-headline">Fichas de Treino</CardTitle>
-                <AiExerciseSuggester student={student} exercises={mockExercises} />
+                <AiExerciseSuggester 
+                  student={student} 
+                  exercises={mockExercises}
+                  onTrainingSheetCreated={handleTrainingSheetCreated}
+                />
               </div>
               <CardDescription>
                 Gerencie e atribua planos de treino para {student.name}.
@@ -81,17 +108,17 @@ export default function StudentDetailPage({ params }: { params: { id: string } }
                     <TableRow>
                       <TableHead>Nome</TableHead>
                       <TableHead>Criado em</TableHead>
-                      <TableHead>Ações</TableHead>
+                      <TableHead className="text-right">Ações</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {student.trainingSheets.map((sheet) => (
                       <TableRow key={sheet.id}>
-                        <TableCell>{sheet.name}</TableCell>
+                        <TableCell className="font-medium">{sheet.name}</TableCell>
                         <TableCell>{new Date(sheet.createdAt).toLocaleDateString()}</TableCell>
-                        <TableCell className="space-x-2">
+                        <TableCell className="text-right space-x-2">
                           <Button variant="outline" size="icon"><FileText className="h-4 w-4" /></Button>
-                          <Button variant="outline" size="icon"><Trash2 className="h-4 w-4" /></Button>
+                          <Button variant="outline" size="icon" className="text-destructive hover:text-destructive"><Trash2 className="h-4 w-4" /></Button>
                         </TableCell>
                       </TableRow>
                     ))}
@@ -100,7 +127,7 @@ export default function StudentDetailPage({ params }: { params: { id: string } }
               ) : (
                 <div className="text-center py-12">
                   <p className="text-muted-foreground">Nenhuma ficha de treino encontrada.</p>
-                  <p className="text-sm text-muted-foreground">Crie uma nova usando o sugestor de IA.</p>
+                  <p className="text-sm text-muted-foreground">Crie uma nova usando o montador de treino com IA.</p>
                 </div>
               )}
             </CardContent>

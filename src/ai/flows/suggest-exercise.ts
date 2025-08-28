@@ -20,9 +20,16 @@ const SuggestExerciseInputSchema = z.object({
 });
 export type SuggestExerciseInput = z.infer<typeof SuggestExerciseInputSchema>;
 
+const SuggestedExerciseSchema = z.object({
+  exerciseName: z.string().describe('O nome do exercício da biblioteca.'),
+  sets: z.string().describe('O número de séries. Ex: 3'),
+  reps: z.string().describe('O número de repetições. Ex: 10-12'),
+});
+
 const SuggestExerciseOutputSchema = z.object({
-  suggestedExercises: z.string().describe('Uma lista de sugestões de exercícios adaptados ao aluno.'),
-  reasoning: z.string().describe('O raciocínio da IA por trás das sugestões de exercícios.'),
+  trainingSheetName: z.string().describe('Um nome criativo e adequado para a ficha de treino. Ex: "Força Total - Fase 1"'),
+  suggestedExercises: z.array(SuggestedExerciseSchema).describe('Uma lista de 5-7 sugestões de exercícios adaptados ao aluno, retirados da biblioteca.'),
+  reasoning: z.string().describe('Uma explicação concisa (2-3 frases) do porquê esta ficha de treino é adequada para o aluno.'),
 });
 export type SuggestExerciseOutput = z.infer<typeof SuggestExerciseOutputSchema>;
 
@@ -34,18 +41,20 @@ const prompt = ai.definePrompt({
   name: 'suggestExercisePrompt',
   input: {schema: SuggestExerciseInputSchema},
   output: {schema: SuggestExerciseOutputSchema},
-  prompt: `Você é um assistente de IA para personal trainer.
+  prompt: `Você é um personal trainer especialista em criar fichas de treino.
 
-Você sugerirá exercícios com base nos objetivos, restrições e desempenho anterior do aluno.
+Sua tarefa é criar uma ficha de treino completa com 5 a 7 exercícios para um aluno, com base nos seus dados e na lista de exercícios disponíveis. Para cada exercício, defina o número de séries e repetições.
 
 Considere as seguintes informações sobre o aluno:
 
-Objetivos: {{{goals}}}
-Restrições: {{{restrictions}}}
-Dados de Desempenho: {{{performanceData}}}
-Biblioteca de Exercícios: {{{exerciseLibrary}}}
+- Objetivos: {{{goals}}}
+- Restrições: {{{restrictions}}}
+- Dados de Desempenho Anteriores: {{{performanceData}}}
 
-Sugira exercícios adaptados ao aluno e explique seu raciocínio.`,
+Use **exclusivamente** os exercícios da seguinte lista para montar o treino. Não invente exercícios.
+- Biblioteca de Exercícios Disponíveis: {{{exerciseLibrary}}}
+
+Crie um nome para a ficha de treino e forneça uma breve justificativa para suas escolhas.`,
 });
 
 const suggestExerciseFlow = ai.defineFlow(
