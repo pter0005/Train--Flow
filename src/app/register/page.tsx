@@ -8,10 +8,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/logo';
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
     router.push('/dashboard');
   };
@@ -23,35 +23,31 @@ export default function LoginPage() {
           <div className="mx-auto mb-4">
             <Logo />
           </div>
-          <CardTitle className="text-3xl font-headline">Welcome to TrainFlow</CardTitle>
-          <CardDescription>Enter your credentials to access your account</CardDescription>
+          <CardTitle className="text-3xl font-headline">Create an Account</CardTitle>
+          <CardDescription>Enter your information to get started with TrainFlow</CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleRegister} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" type="text" placeholder="Jane Doe" required />
+            </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input id="email" type="email" placeholder="m@example.com" required />
             </div>
             <div className="space-y-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-                <Link href="#" className="ml-auto inline-block text-sm underline">
-                  Forgot your password?
-                </Link>
-              </div>
+              <Label htmlFor="password">Password</Label>
               <Input id="password" type="password" required />
             </div>
             <Button type="submit" className="w-full">
-              Sign In
-            </Button>
-            <Button variant="outline" className="w-full">
-              Sign In with Magic Link
+              Create Account
             </Button>
           </form>
           <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account?{' '}
-            <Link href="/register" className="underline">
-              Sign up
+            Already have an account?{' '}
+            <Link href="/" className="underline">
+              Sign in
             </Link>
           </div>
         </CardContent>
