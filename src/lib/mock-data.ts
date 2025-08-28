@@ -1,10 +1,11 @@
+
 import type { Student, Exercise } from './types';
 
 export const mockStudents: Student[] = [
   {
     id: '1',
     name: 'Ana Silva',
-    email: 'ana.silva@example.com',
+    email: 'aluno@trainflow.com',
     phone: '123-456-7890',
     avatarUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
     goals: 'Perder 10kg, aumentar massa muscular',
@@ -202,7 +203,7 @@ export const mockExercises: Exercise[] = [
     name: 'Agachamento Goblet',
     muscleGroup: 'Pernas',
     instructions: 'Segure um halter verticalmente contra o peito. Agache até que seus quadris fiquem paralelos ao chão.',
-    imageUrl: 'https://i.imgur.com/rG4n1it.gif',
+    imageUrl: 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Goblet-Squat.gif',
     videoUrl: 'https://www.youtube.com/watch?v=k9qj7yusNkE',
   },
   {
@@ -210,7 +211,7 @@ export const mockExercises: Exercise[] = [
     name: 'Supino',
     muscleGroup: 'Peito',
     instructions: 'Deite-se em um banco plano, pegue a barra com uma pegada de largura média. Abaixe a barra até o meio do peito e empurre-a de volta para cima.',
-    imageUrl: 'https://i.imgur.com/wI45A4a.gif',
+    imageUrl: 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Bench-Press.gif',
     videoUrl: 'https://www.youtube.com/watch?v=4-o2gSg2a-o',
   },
   {
@@ -218,7 +219,7 @@ export const mockExercises: Exercise[] = [
     name: 'Prancha',
     muscleGroup: 'Core',
     instructions: 'Mantenha a posição de flexão com o corpo formando uma linha reta da cabeça aos calcanhares. Contraia o core.',
-    imageUrl: 'https://i.imgur.com/gL5y3H1.gif',
+    imageUrl: 'https://fitnessprogramer.com/wp-content/uploads/2021/05/Plank.gif',
     videoUrl: 'https://www.youtube.com/watch?v=B296mZDhrP4',
   },
   {
@@ -226,7 +227,7 @@ export const mockExercises: Exercise[] = [
     name: 'Rosca Bíceps',
     muscleGroup: 'Braços',
     instructions: 'Fique em pé, segurando um halter em cada mão com os braços estendidos. Flexione os cotovelos, levando os pesos até o nível dos ombros.',
-    imageUrl: 'https://i.imgur.com/D4sT5zL.gif',
+    imageUrl: 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Bicep-Curl.gif',
     videoUrl: 'https://www.youtube.com/watch?v=Z2V2_U4d2aM',
   },
    {
@@ -234,7 +235,7 @@ export const mockExercises: Exercise[] = [
     name: 'Levantamento Terra',
     muscleGroup: 'Costas',
     instructions: 'Posicione-se com o meio do pé sob a barra. Incline o quadril e segure a barra. Levante o peito e endireite a parte inferior das costas. Puxe.',
-    imageUrl: 'https://i.imgur.com/Qg9vR3j.gif',
+    imageUrl: 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Deadlift.gif',
     videoUrl: 'https://www.youtube.com/watch?v=G4-s5j9n_tM',
   },
    {
@@ -242,7 +243,9 @@ export const mockExercises: Exercise[] = [
     name: 'Desenvolvimento de Ombros',
     muscleGroup: 'Ombros',
     instructions: 'Fique em pé com a barra nos ombros da frente. Pressione a barra acima da cabeça até que seus braços estejam totalmente estendidos.',
-    imageUrl: 'https://i.imgur.com/mG7p5M1.gif',
+    imageUrl: 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Overhead-Press.gif',
     videoUrl: 'https://www.youtube.com/watch?v=5yWa-a4sUjE',
   },
 ];
+
+    
