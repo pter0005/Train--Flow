@@ -37,6 +37,29 @@ export async function suggestExercise(input: SuggestExerciseInput): Promise<Sugg
   return suggestExerciseFlow(input);
 }
 
+const suggestExercisePrompt = ai.definePrompt(
+  {
+    name: 'suggestExercisePrompt',
+    input: { schema: SuggestExerciseInputSchema },
+    output: { schema: SuggestExerciseOutputSchema },
+    prompt: `Você é um personal trainer especialista em criar fichas de treino.
+
+Sua tarefa é criar uma ficha de treino completa com 5 a 7 exercícios para um aluno, com base nos seus dados e na lista de exercícios disponíveis. Para cada exercício, defina o número de séries e repetições.
+
+Considere as seguintes informações sobre o aluno:
+
+- Objetivos: {{{goals}}}
+- Restrições: {{{restrictions}}}
+- Dados de Desempenho Anteriores: {{{performanceData}}}
+
+Use **exclusivamente** os exercícios da seguinte lista para montar o treino. Não invente exercícios.
+- Biblioteca de Exercícios Disponíveis: {{{exerciseLibrary}}}
+
+Crie um nome para a ficha de treino e forneça uma breve justificativa para suas escolhas.`,
+  },
+);
+
+
 const suggestExerciseFlow = ai.defineFlow(
   {
     name: 'suggestExerciseFlow',
@@ -44,29 +67,7 @@ const suggestExerciseFlow = ai.defineFlow(
     outputSchema: SuggestExerciseOutputSchema,
   },
   async (input) => {
-    const prompt = `Você é um personal trainer especialista em criar fichas de treino.
-
-Sua tarefa é criar uma ficha de treino completa com 5 a 7 exercícios para um aluno, com base nos seus dados e na lista de exercícios disponíveis. Para cada exercício, defina o número de séries e repetições.
-
-Considere as seguintes informações sobre o aluno:
-
-- Objetivos: {{goals}}
-- Restrições: {{restrictions}}
-- Dados de Desempenho Anteriores: {{performanceData}}
-
-Use **exclusivamente** os exercícios da seguinte lista para montar o treino. Não invente exercícios.
-- Biblioteca de Exercícios Disponíveis: {{exerciseLibrary}}
-
-Crie um nome para a ficha de treino e forneça uma breve justificativa para suas escolhas.`;
-
-    const { output } = await ai.generate({
-      prompt: prompt,
-      model: 'googleai/gemini-1.5-flash-latest',
-      input: input,
-      output: {
-        schema: SuggestExerciseOutputSchema,
-      },
-    });
+    const { output } = await suggestExercisePrompt(input);
     return output!;
   }
 );
