@@ -214,7 +214,7 @@ export const mockExercises: Exercise[] = [
     name: 'Supino',
     muscleGroup: 'Peito',
     instructions: 'Deite-se em um banco plano, pegue a barra com uma pegada de largura média. Abaixe a barra até o meio do peito e empurre-a de volta para cima.',
-    imageUrl: 'https://i.imgur.com/oZqC9M4.gif',
+    imageUrl: 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Bench-Press.gif',
     videoUrl: 'https://www.youtube.com/watch?v=4-o2gSg2a-o',
   },
   {
@@ -238,7 +238,7 @@ export const mockExercises: Exercise[] = [
     name: 'Levantamento Terra',
     muscleGroup: 'Costas',
     instructions: 'Posicione-se com o meio do pé sob a barra. Incline o quadril e segure a barra. Levante o peito e endireite a parte inferior das costas. Puxe.',
-    imageUrl: 'https://i.imgur.com/GCR8A9x.gif',
+    imageUrl: 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Deadlift.gif',
     videoUrl: 'https://www.youtube.com/watch?v=G4-s5j9n_tM',
   },
    {
