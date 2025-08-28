@@ -19,7 +19,7 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-blue-200 via-blue-400 to-blue-900 p-4">
-      <div className="flex flex-col md:flex-row gap-8 items-center">
+      <div className="flex flex-col gap-8 items-center">
         <Card className="w-full max-w-md shadow-2xl bg-black/20 backdrop-blur-xl border border-white/20 text-white">
           <CardHeader className="space-y-1 text-center">
             <div className="mx-auto mb-4">
@@ -59,27 +59,21 @@ export default function LoginPage() {
           </CardContent>
         </Card>
         
-        <Card className="w-full max-w-md shadow-2xl bg-black/20 backdrop-blur-xl border border-white/20 text-white">
+        <Card className="w-full max-w-sm shadow-2xl bg-black/20 backdrop-blur-xl border border-white/20 text-white">
           <CardHeader>
-            <CardTitle className="text-2xl font-headline text-center">Acesso de Demonstração</CardTitle>
-            <CardDescription className="text-center text-white/80">Use estas credenciais para explorar.</CardDescription>
+            <CardTitle className="text-xl font-headline text-center">Acesso de Demonstração</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="p-4 rounded-lg bg-white/10 border border-white/20">
-              <h3 className="font-semibold text-lg">Personal Trainer</h3>
-              <p className="text-sm text-white/90">Acesso completo ao painel de gerenciamento.</p>
-              <div className="mt-2 text-sm">
-                <p><span className="font-medium text-white/80">E-mail:</span> personal@trainflow.com</p>
-                <p><span className="font-medium text-white/80">Senha:</span> senha123</p>
-              </div>
+          <CardContent className="space-y-4 text-sm">
+            <div className="p-3 rounded-lg bg-white/10 border border-white/20">
+              <h3 className="font-semibold">Personal Trainer</h3>
+              <p><span className="font-medium text-white/80">E-mail:</span> personal@trainflow.com</p>
+              <p><span className="font-medium text-white/80">Senha:</span> senha123</p>
             </div>
-             <div className="p-4 rounded-lg bg-white/10 border border-white/20">
-              <h3 className="font-semibold text-lg">Aluno</h3>
-              <p className="text-sm text-white/90">Visualização do aluno (Em breve).</p>
-               <div className="mt-2 text-sm">
-                <p><span className="font-medium text-white/80">E-mail:</span> aluno@trainflow.com</p>
-                <p><span className="font-medium text-white/80">Senha:</span> senha123</p>
-              </div>
+             <div className="p-3 rounded-lg bg-white/10 border border-white/20">
+              <h3 className="font-semibold">Aluno</h3>
+              <p className="text-xs text-white/90">(Visualização em breve)</p>
+               <p><span className="font-medium text-white/80">E-mail:</span> aluno@trainflow.com</p>
+               <p><span className="font-medium text-white/80">Senha:</span> senha123</p>
             </div>
           </CardContent>
         </Card>
