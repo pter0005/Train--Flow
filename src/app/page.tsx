@@ -17,8 +17,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background p-4">
-      <Card className="w-full max-w-md shadow-2xl">
+    <div
+      className="flex min-h-screen items-center justify-center bg-cover bg-center p-4"
+      style={{ backgroundImage: "url('https://i.imgur.com/fM7hyqW.png')" }}
+    >
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+      <Card className="z-10 w-full max-w-md bg-card/60 backdrop-blur-lg border-primary/20 shadow-primary/20 shadow-2xl">
         <CardHeader className="space-y-1 text-center">
           <div className="mx-auto mb-4">
             <Logo />
@@ -30,7 +34,7 @@ export default function LoginPage() {
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">E-mail</Label>
-              <Input id="email" type="email" placeholder="m@exemplo.com" required />
+              <Input id="email" type="email" placeholder="m@exemplo.com" required className="bg-background/70"/>
             </div>
             <div className="space-y-2">
               <div className="flex items-center">
@@ -39,12 +43,12 @@ export default function LoginPage() {
                   Esqueceu sua senha?
                 </Link>
               </div>
-              <Input id="password" type="password" required />
+              <Input id="password" type="password" required className="bg-background/70"/>
             </div>
             <Button type="submit" className="w-full">
               Entrar
             </Button>
-            <Button variant="outline" className="w-full">
+            <Button variant="outline" className="w-full bg-transparent hover:bg-primary/10">
               Entrar com Link Mágico
             </Button>
           </form>
