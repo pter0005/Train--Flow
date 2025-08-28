@@ -50,18 +50,19 @@ Sua tarefa é criar uma ficha de treino completa com 5 a 7 exercícios para um a
 
 Considere as seguintes informações sobre o aluno:
 
-- Objetivos: ${input.goals}
-- Restrições: ${input.restrictions}
-- Dados de Desempenho Anteriores: ${input.performanceData}
+- Objetivos: {{goals}}
+- Restrições: {{restrictions}}
+- Dados de Desempenho Anteriores: {{performanceData}}
 
 Use **exclusivamente** os exercícios da seguinte lista para montar o treino. Não invente exercícios.
-- Biblioteca de Exercícios Disponíveis: ${input.exerciseLibrary}
+- Biblioteca de Exercícios Disponíveis: {{exerciseLibrary}}
 
 Crie um nome para a ficha de treino e forneça uma breve justificativa para suas escolhas.`;
 
     const { output } = await ai.generate({
       prompt: prompt,
       model: 'googleai/gemini-1.5-flash-latest',
+      input: input,
       output: {
         schema: SuggestExerciseOutputSchema,
       },
