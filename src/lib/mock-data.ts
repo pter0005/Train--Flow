@@ -42,6 +42,9 @@ export const mockStudents: Student[] = [
           { exerciseId: 'ex1', sets: '3', reps: '12', load: '20kg', rest: '60s' },
           { exerciseId: 'ex2', sets: '3', reps: '10', load: '50kg', rest: '90s' },
           { exerciseId: 'ex3', sets: '3', reps: '15', load: 'Peso Corporal', rest: '60s' },
+          { exerciseId: 'ex4', sets: '4', reps: '12', load: '10kg', rest: '60s' },
+          { exerciseId: 'ex5', sets: '3', reps: '8', load: '80kg', rest: '90s' },
+          { exerciseId: 'ex6', sets: '4', reps: '10', load: '30kg', rest: '60s' },
         ],
       },
     ],
@@ -247,5 +250,3 @@ export const mockExercises: Exercise[] = [
     videoUrl: 'https://www.youtube.com/watch?v=5yWa-a4sUjE',
   },
 ];
-
-    
