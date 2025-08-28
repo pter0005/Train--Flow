@@ -8,13 +8,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/logo';
+import { useState } from 'react';
 
 export default function LoginPage() {
   const router = useRouter();
+  const [email, setEmail] = useState('');
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push('/dashboard');
+    if (email.includes('aluno')) {
+        router.push('/aluno');
+    } else {
+        router.push('/dashboard');
+    }
   };
 
   return (
@@ -32,7 +38,15 @@ export default function LoginPage() {
             <form onSubmit={handleLogin} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-white/90">E-mail</Label>
-                <Input id="email" type="email" placeholder="m@exemplo.com" required className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:ring-white"/>
+                <Input 
+                  id="email" 
+                  type="email" 
+                  placeholder="m@exemplo.com" 
+                  required 
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:ring-white"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
               <div className="space-y-2">
                 <div className="flex items-center">
@@ -71,7 +85,6 @@ export default function LoginPage() {
             </div>
              <div className="p-3 rounded-lg bg-white/10 border border-white/20">
               <h3 className="font-semibold">Aluno</h3>
-              <p className="text-xs text-white/90">(Visualização em breve)</p>
                <p><span className="font-medium text-white/80">E-mail:</span> aluno@trainflow.com</p>
                <p><span className="font-medium text-white/80">Senha:</span> senha123</p>
             </div>
