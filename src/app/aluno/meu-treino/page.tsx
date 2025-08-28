@@ -1,10 +1,12 @@
 
 'use client';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Dumbbell, Repeat, Weight, Timer, Info } from 'lucide-react';
+import { Dumbbell, Repeat, Weight, Timer, Info, Youtube } from 'lucide-react';
 import { mockStudents, mockExercises } from '@/lib/mock-data';
 import Image from 'next/image';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function MeuTreinoPage() {
   const student = mockStudents[0];
@@ -34,7 +36,7 @@ export default function MeuTreinoPage() {
                         <AccordionTrigger className="hover:no-underline">
                            <div className="flex items-center gap-4">
                              <Image
-                                src={`${exerciseDetails.imageUrl}?${exerciseDetails.id}`}
+                                src={exerciseDetails.imageUrl || `https://picsum.photos/80/80?${exerciseDetails.id}`}
                                 alt={exerciseDetails.name}
                                 width={80}
                                 height={80}
@@ -52,6 +54,14 @@ export default function MeuTreinoPage() {
                             <div>
                                 <h4 className="font-semibold mb-2">Instruções</h4>
                                 <p className="text-muted-foreground">{exerciseDetails.instructions}</p>
+                                {exerciseDetails.videoUrl && (
+                                  <Button asChild className="mt-4">
+                                    <Link href={exerciseDetails.videoUrl} target="_blank">
+                                      <Youtube className="mr-2 h-4 w-4"/>
+                                      Ver Vídeo de Execução
+                                    </Link>
+                                  </Button>
+                                )}
                             </div>
                             <div className="space-y-4">
                                  <div className="flex items-center gap-4">
