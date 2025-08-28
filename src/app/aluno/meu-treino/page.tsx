@@ -28,6 +28,13 @@ export default function MeuTreinoPage() {
   const currentSheet = student.trainingSheets[0];
   const [videoUrl, setVideoUrl] = useState('');
 
+  const formattedDate = new Date(currentSheet.createdAt).toLocaleDateString('pt-BR', {
+    timeZone: 'UTC',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+
   return (
     <>
       <div className="flex items-center justify-between">
@@ -39,7 +46,7 @@ export default function MeuTreinoPage() {
       <Card>
         <CardHeader>
             <CardTitle className="font-headline text-2xl">{currentSheet.name}</CardTitle>
-            <CardDescription>Criado em: {new Date(currentSheet.createdAt).toLocaleDateString()}</CardDescription>
+            <CardDescription>Criado em: {formattedDate}</CardDescription>
         </CardHeader>
         <CardContent>
             <Dialog open={!!videoUrl} onOpenChange={(isOpen) => !isOpen && setVideoUrl('')}>
