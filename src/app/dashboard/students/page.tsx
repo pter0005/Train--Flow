@@ -21,7 +21,7 @@ export default function StudentsPage() {
           <Card key={student.id} className="hover:shadow-lg transition-shadow">
             <CardHeader className="flex flex-row items-center gap-4">
               <Avatar className="h-12 w-12">
-                <AvatarImage src={`${student.avatarUrl}?${student.id}`} alt={student.name} data-ai-hint="portrait person" />
+                <AvatarImage src={student.avatarUrl} alt={student.name} data-ai-hint="portrait person" />
                 <AvatarFallback>{student.name.charAt(0)}</AvatarFallback>
               </Avatar>
               <div>

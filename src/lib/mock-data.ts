@@ -6,7 +6,7 @@ export const mockStudents: Student[] = [
     name: 'Ana Silva',
     email: 'ana.silva@example.com',
     phone: '123-456-7890',
-    avatarUrl: 'https://picsum.photos/id/1/200/200',
+    avatarUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
     goals: 'Perder 10kg, aumentar massa muscular',
     restrictions: 'Leve dor no joelho esquerdo',
     measurements: [
@@ -50,7 +50,7 @@ export const mockStudents: Student[] = [
     name: 'Carlos Souza',
     email: 'carlos.souza@example.com',
     phone: '098-765-4321',
-    avatarUrl: 'https://picsum.photos/id/2/200/200',
+    avatarUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026704d',
     goals: 'Melhorar a saúde cardiovascular',
     restrictions: 'Nenhuma',
     measurements: [
@@ -69,7 +69,7 @@ export const mockStudents: Student[] = [
     name: 'Beatriz Lima',
     email: 'beatriz.lima@example.com',
     phone: '111-222-3333',
-    avatarUrl: 'https://picsum.photos/id/3/200/200',
+    avatarUrl: 'https://i.pravatar.cc/150?u=a04258114e29026702d',
     goals: 'Ganhar força e resistência',
     restrictions: 'Asma, evitar exercícios de alta intensidade',
     measurements: [
@@ -82,7 +82,7 @@ export const mockStudents: Student[] = [
     name: 'Daniel Almeida',
     email: 'daniel.almeida@example.com',
     phone: '444-555-6666',
-    avatarUrl: 'https://picsum.photos/id/4/200/200',
+    avatarUrl: 'https://i.pravatar.cc/150?u=a04258114e29026708d',
     goals: 'Correr uma maratona de 10km',
     restrictions: 'Nenhuma',
     measurements: [
@@ -95,7 +95,7 @@ export const mockStudents: Student[] = [
     name: 'Eduarda Costa',
     email: 'eduarda.costa@example.com',
     phone: '777-888-9999',
-    avatarUrl: 'https://picsum.photos/id/5/200/200',
+    avatarUrl: 'https://i.pravatar.cc/150?u=a04258114e29026706d',
     goals: 'Definição muscular e flexibilidade',
     restrictions: 'Nenhuma',
     measurements: [
@@ -108,7 +108,7 @@ export const mockStudents: Student[] = [
     name: 'Felipe Pereira',
     email: 'felipe.pereira@example.com',
     phone: '123-123-1234',
-    avatarUrl: 'https://picsum.photos/id/6/200/200',
+    avatarUrl: 'https://i.pravatar.cc/150?u=a04258114e29026701d',
     goals: 'Aumentar a massa muscular (hipertrofia)',
     restrictions: 'Histórico de lesão no ombro',
     measurements: [
@@ -121,7 +121,7 @@ export const mockStudents: Student[] = [
     name: 'Gabriela Martins',
     email: 'gabriela.martins@example.com',
     phone: '456-456-4567',
-    avatarUrl: 'https://picsum.photos/id/7/200/200',
+    avatarUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026704e',
     goals: 'Perder peso e melhorar a postura',
     restrictions: 'Nenhuma',
     measurements: [
@@ -134,7 +134,7 @@ export const mockStudents: Student[] = [
     name: 'Heitor Santos',
     email: 'heitor.santos@example.com',
     phone: '789-789-7890',
-    avatarUrl: 'https://picsum.photos/id/8/200/200',
+    avatarUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026704f',
     goals: 'Manter a forma e aliviar o estresse',
     restrictions: 'Nenhuma',
     measurements: [
@@ -147,7 +147,7 @@ export const mockStudents: Student[] = [
     name: 'Isabela Ribeiro',
     email: 'isabela.ribeiro@example.com',
     phone: '101-112-1314',
-    avatarUrl: 'https://picsum.photos/id/9/200/200',
+    avatarUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026704a',
     goals: 'Recuperação pós-parto',
     restrictions: 'Liberada para exercícios de baixo impacto',
     measurements: [
@@ -160,7 +160,7 @@ export const mockStudents: Student[] = [
     name: 'João Mendes',
     email: 'joao.mendes@example.com',
     phone: '151-617-1819',
-    avatarUrl: 'https://picsum.photos/id/10/200/200',
+    avatarUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026704b',
     goals: 'Melhorar o condicionamento para o futebol',
     restrictions: 'Nenhuma',
     measurements: [
@@ -173,7 +173,7 @@ export const mockStudents: Student[] = [
     name: 'Larissa Nunes',
     email: 'larissa.nunes@example.com',
     phone: '202-122-2324',
-    avatarUrl: 'https://picsum.photos/id/11/200/200',
+    avatarUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026704c',
     goals: 'Tonificar o corpo',
     restrictions: 'Nenhuma',
     measurements: [
@@ -186,7 +186,7 @@ export const mockStudents: Student[] = [
     name: 'Marcos Ferreira',
     email: 'marcos.ferreira@example.com',
     phone: '252-627-2829',
-    avatarUrl: 'https://picsum.photos/id/12/200/200',
+    avatarUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026704d',
     goals: 'Aumentar a explosão e agilidade',
     restrictions: 'Leve desconforto no tornozelo',
     measurements: [

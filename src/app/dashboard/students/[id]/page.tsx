@@ -3,18 +3,19 @@
 import { useState } from 'react';
 import { mockStudents, mockExercises } from '@/lib/mock-data';
 import type { Student, TrainingSheet } from '@/lib/types';
-import { notFound } from 'next/navigation';
+import { notFound, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { FileText, Pencil, Trash2 } from 'lucide-react';
+import { FileText, Pencil, Trash2, Wand2 } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import ProgressChart from '@/components/dashboard/progress-chart';
 import AiExerciseSuggester from '@/components/dashboard/ai-exercise-suggester';
 
 export default function StudentDetailPage({ params }: { params: { id: string } }) {
   const initialStudent = mockStudents.find((s) => s.id === params.id);
+  const router = useRouter();
 
   const [student, setStudent] = useState<Student | undefined>(initialStudent);
 
@@ -62,7 +63,7 @@ export default function StudentDetailPage({ params }: { params: { id: string } }
         </Button>
       </div>
 
-      <Tabs defaultValue="profile" className="mt-6">
+      <Tabs defaultValue="training" className="mt-6">
         <TabsList>
           <TabsTrigger value="profile">Perfil</TabsTrigger>
           <TabsTrigger value="training">Fichas de Treino</TabsTrigger>
@@ -91,11 +92,10 @@ export default function StudentDetailPage({ params }: { params: { id: string } }
             <CardHeader>
               <div className="flex justify-between items-center">
                 <CardTitle className="font-headline">Fichas de Treino</CardTitle>
-                <AiExerciseSuggester 
-                  student={student} 
-                  exercises={mockExercises}
-                  onTrainingSheetCreated={handleTrainingSheetCreated}
-                />
+                <Button onClick={() => router.push('/dashboard/ai-builder')}>
+                    <Wand2 className="mr-2 h-4 w-4"/>
+                    Criar com IA
+                </Button>
               </div>
               <CardDescription>
                 Gerencie e atribua planos de treino para {student.name}.

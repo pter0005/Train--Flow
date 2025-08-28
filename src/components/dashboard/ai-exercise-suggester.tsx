@@ -11,13 +11,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { useToast } from '@/hooks/use-toast';
 
-type AIEngineProps = {
+type AiExerciseSuggesterProps = {
   student: Student;
   exercises: Exercise[];
   onTrainingSheetCreated: (newSheet: TrainingSheet) => void;
+  openTrigger?: React.ReactNode;
 };
 
-export default function AiExerciseSuggester({ student, exercises, onTrainingSheetCreated }: AIEngineProps) {
+export default function AiExerciseSuggester({ student, exercises, onTrainingSheetCreated, openTrigger }: AiExerciseSuggesterProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [suggestion, setSuggestion] = useState<SuggestExerciseOutput | null>(null);
@@ -75,10 +76,6 @@ export default function AiExerciseSuggester({ student, exercises, onTrainingShee
     onTrainingSheetCreated(newSheet);
     setIsOpen(false);
     setSuggestion(null);
-    toast({
-        title: "Ficha de Treino Salva!",
-        description: `${suggestion.trainingSheetName} foi adicionada para ${student.name}.`,
-    });
   };
 
   return (
@@ -90,9 +87,11 @@ export default function AiExerciseSuggester({ student, exercises, onTrainingShee
         }
     }}>
       <DialogTrigger asChild>
-        <Button>
-          <Wand2 className="mr-2 h-4 w-4" /> Criar com IA
-        </Button>
+        {openTrigger || (
+          <Button>
+            <Wand2 className="mr-2 h-4 w-4" /> Criar com IA
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent className="max-w-3xl">
         <DialogHeader>
