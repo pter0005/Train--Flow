@@ -1,3 +1,4 @@
+
 'use client'
 
 import { useState } from 'react';
@@ -13,7 +14,11 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import ProgressChart from '@/components/dashboard/progress-chart';
 import AiExerciseSuggester from '@/components/dashboard/ai-exercise-suggester';
 
-export default function StudentDetailPage({ params }: { params: { id: string } }) {
+type StudentDetailPageProps = {
+  params: { id: string };
+};
+
+export default function StudentDetailPage({ params }: StudentDetailPageProps) {
   const initialStudent = mockStudents.find((s) => s.id === params.id);
   const router = useRouter();
 
