@@ -1,10 +1,7 @@
 
-'use client'
-
-import { useState } from 'react';
 import { mockStudents, mockExercises } from '@/lib/mock-data';
 import type { Student, TrainingSheet } from '@/lib/types';
-import { notFound, useRouter } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -12,43 +9,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { FileText, Pencil, Trash2, Wand2 } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import ProgressChart from '@/components/dashboard/progress-chart';
-import AiExerciseSuggester from '@/components/dashboard/ai-exercise-suggester';
+import StudentTrainingSheet from '@/components/dashboard/student-training-sheet';
 
-// Define a interface de props diretamente e de forma correta.
 interface StudentDetailPageProps {
   params: { id: string };
 };
 
 export default function StudentDetailPage({ params }: StudentDetailPageProps) {
-  const initialStudent = mockStudents.find((s) => s.id === params.id);
-  const router = useRouter();
+  const student = mockStudents.find((s) => s.id === params.id);
 
-  // O estado agora é inicializado corretamente com o aluno encontrado ou undefined.
-  const [student, setStudent] = useState<Student | undefined>(initialStudent);
-
-  // Se nenhum aluno for encontrado com o ID fornecido, a página 404 é exibida.
   if (!student) {
     notFound();
   }
-
-  const handleTrainingSheetCreated = (newSheet: TrainingSheet) => {
-    setStudent(prevStudent => {
-      if (!prevStudent) return prevStudent;
-      
-      const updatedStudent = {
-        ...prevStudent,
-        trainingSheets: [...prevStudent.trainingSheets, newSheet]
-      };
-
-      // Atualiza o mock data para refletir a mudança, simulando persistência.
-      const studentIndex = mockStudents.findIndex(s => s.id === prevStudent.id);
-      if (studentIndex !== -1) {
-        mockStudents[studentIndex] = updatedStudent;
-      }
-      
-      return updatedStudent;
-    });
-  };
 
   return (
     <>
@@ -97,60 +69,7 @@ export default function StudentDetailPage({ params }: StudentDetailPageProps) {
           </Card>
         </TabsContent>
         <TabsContent value="training" className="mt-4">
-          <Card>
-            <CardHeader>
-              <div className="flex justify-between items-center">
-                <CardTitle className="font-headline">Fichas de Treino</CardTitle>
-                <AiExerciseSuggester 
-                  student={student} 
-                  exercises={mockExercises}
-                  onTrainingSheetCreated={handleTrainingSheetCreated}
-                />
-              </div>
-              <CardDescription>
-                Gerencie e atribua planos de treino para {student.name}.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              {student.trainingSheets.length > 0 ? (
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Nome</TableHead>
-                      <TableHead>Criado em</TableHead>
-                      <TableHead className="text-right">Ações</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {student.trainingSheets.map((sheet) => (
-                      <TableRow key={sheet.id}>
-                        <TableCell className="font-medium">{sheet.name}</TableCell>
-                        <TableCell>{new Date(sheet.createdAt).toLocaleDateString()}</TableCell>
-                        <TableCell className="text-right space-x-2">
-                          <Button variant="outline" size="icon"><FileText className="h-4 w-4" /></Button>
-                          <Button variant="outline" size="icon" className="text-destructive hover:text-destructive"><Trash2 className="h-4 w-4" /></Button>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              ) : (
-                <div className="text-center py-12">
-                  <p className="text-muted-foreground">Nenhuma ficha de treino encontrada.</p>
-                  <AiExerciseSuggester 
-                    student={student} 
-                    exercises={mockExercises}
-                    onTrainingSheetCreated={handleTrainingSheetCreated}
-                    openTrigger={
-                      <Button className="mt-4">
-                        <Wand2 className="mr-2 h-4 w-4" /> Criar com IA
-                      </Button>
-                    }
-                  />
-                </div>
-              )}
-            </CardContent>
-          </Card>
+          <StudentTrainingSheet student={student} />
         </TabsContent>
         <TabsContent value="assessment" className="mt-4">
            <div className="grid gap-6 lg:grid-cols-3">
