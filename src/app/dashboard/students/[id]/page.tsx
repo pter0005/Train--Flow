@@ -14,6 +14,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import ProgressChart from '@/components/dashboard/progress-chart';
 import AiExerciseSuggester from '@/components/dashboard/ai-exercise-suggester';
 
+// Esta é a definição de props correta e simplificada para uma página dinâmica no App Router.
 interface StudentDetailPageProps {
   params: { id: string };
 };
@@ -22,8 +23,10 @@ export default function StudentDetailPage({ params }: StudentDetailPageProps) {
   const initialStudent = mockStudents.find((s) => s.id === params.id);
   const router = useRouter();
 
+  // O estado agora é inicializado corretamente com o aluno encontrado ou undefined.
   const [student, setStudent] = useState<Student | undefined>(initialStudent);
 
+  // Se nenhum aluno for encontrado com o ID fornecido, a página 404 é exibida.
   if (!student) {
     notFound();
   }
@@ -37,6 +40,7 @@ export default function StudentDetailPage({ params }: StudentDetailPageProps) {
         trainingSheets: [...prevStudent.trainingSheets, newSheet]
       };
 
+      // Atualiza o mock data para refletir a mudança, simulando persistência.
       const studentIndex = mockStudents.findIndex(s => s.id === prevStudent.id);
       if (studentIndex !== -1) {
         mockStudents[studentIndex] = updatedStudent;
