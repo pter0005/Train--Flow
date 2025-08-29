@@ -1,5 +1,4 @@
 
-
 'use client'
 
 import { useState } from 'react';
@@ -15,7 +14,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import ProgressChart from '@/components/dashboard/progress-chart';
 import AiExerciseSuggester from '@/components/dashboard/ai-exercise-suggester';
 
-// Definindo a interface de props de forma explícita e simples
 interface StudentDetailPageProps {
   params: { id: string };
 };
