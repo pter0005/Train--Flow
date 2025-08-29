@@ -97,10 +97,11 @@ export default function StudentDetailPage({ params }: StudentDetailPageProps) {
             <CardHeader>
               <div className="flex justify-between items-center">
                 <CardTitle className="font-headline">Fichas de Treino</CardTitle>
-                <Button onClick={() => router.push('/dashboard/ai-builder')}>
-                    <Wand2 className="mr-2 h-4 w-4"/>
-                    Criar com IA
-                </Button>
+                <AiExerciseSuggester 
+                  student={student} 
+                  exercises={mockExercises}
+                  onTrainingSheetCreated={handleTrainingSheetCreated}
+                />
               </div>
               <CardDescription>
                 Gerencie e atribua planos de treino para {student.name}.
@@ -132,7 +133,16 @@ export default function StudentDetailPage({ params }: StudentDetailPageProps) {
               ) : (
                 <div className="text-center py-12">
                   <p className="text-muted-foreground">Nenhuma ficha de treino encontrada.</p>
-                  <p className="text-sm text-muted-foreground">Crie uma nova usando o montador de treino com IA.</p>
+                  <AiExerciseSuggester 
+                    student={student} 
+                    exercises={mockExercises}
+                    onTrainingSheetCreated={handleTrainingSheetCreated}
+                    openTrigger={
+                      <Button className="mt-4">
+                        <Wand2 className="mr-2 h-4 w-4" /> Criar com IA
+                      </Button>
+                    }
+                  />
                 </div>
               )}
             </CardContent>
