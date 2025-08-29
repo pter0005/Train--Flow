@@ -69,7 +69,9 @@ const suggestExerciseFlow = ai.defineFlow(
   },
   async (input) => {
     const { output } = await suggestExercisePrompt(input);
-    return output!;
+    if (!output) {
+      throw new Error('A IA não conseguiu gerar uma sugestão de exercício.');
+    }
+    return output;
   }
 );
-

@@ -14,7 +14,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import ProgressChart from '@/components/dashboard/progress-chart';
 import AiExerciseSuggester from '@/components/dashboard/ai-exercise-suggester';
 
-type StudentDetailPageProps = {
+interface StudentDetailPageProps {
   params: { id: string };
 };
 
