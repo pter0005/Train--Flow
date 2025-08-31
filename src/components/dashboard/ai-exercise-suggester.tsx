@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -28,15 +29,17 @@ export default function AiExerciseSuggester({ student, exercises, onTrainingShee
     setIsLoading(true);
     setSuggestion(null);
     try {
-      const exerciseLibrary = exercises.map(e => `${e.name}`).join(', ');
-      const performanceData = student.trainingSheets
-        .flatMap(sheet => sheet.exercises.map(ex => `Completou ${ex.sets}x${ex.reps} de ${exercises.find(e => e.id === ex.exerciseId)?.name} com ${ex.load}`))
-        .join('; ');
+      const exerciseLibrary = exercises.map(e => e.name).join(', ');
+      
+      // Simplified performance data to be more robust
+      const performanceData = student.trainingSheets.length > 0
+        ? `O aluno já completou as seguintes fichas: ${student.trainingSheets.map(s => s.name).join(', ')}.`
+        : 'Nenhum dado de desempenho anterior disponível.';
 
       const result = await suggestExercise({
         goals: student.goals,
         restrictions: student.restrictions,
-        performanceData: performanceData || 'Nenhum dado de desempenho disponível.',
+        performanceData: performanceData,
         exerciseLibrary: exerciseLibrary,
       });
       setSuggestion(result);
