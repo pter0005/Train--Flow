@@ -1,4 +1,3 @@
-
 import { mockStudents, mockExercises } from '@/lib/mock-data';
 import type { Student, TrainingSheet } from '@/lib/types';
 import { notFound } from 'next/navigation';
@@ -13,9 +12,10 @@ import StudentTrainingSheet from '@/components/dashboard/student-training-sheet'
 
 interface StudentDetailPageProps {
   params: { id: string };
+  searchParams: any;
 };
 
-export default function StudentDetailPage({ params }: StudentDetailPageProps) {
+export default function StudentDetailPage({ params, searchParams }: StudentDetailPageProps) {
   const student = mockStudents.find((s) => s.id === params.id);
 
   if (!student) {
