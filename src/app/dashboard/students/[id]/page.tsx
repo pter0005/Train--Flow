@@ -1,3 +1,4 @@
+
 import { mockStudents, mockExercises } from '@/lib/mock-data';
 import type { Student, TrainingSheet } from '@/lib/types';
 import { notFound } from 'next/navigation';
@@ -10,12 +11,12 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import ProgressChart from '@/components/dashboard/progress-chart';
 import StudentTrainingSheet from '@/components/dashboard/student-training-sheet';
 
+// Corrigido: O tipo das props da página foi ajustado para corresponder ao que o Next.js espera.
 interface StudentDetailPageProps {
   params: { id: string };
-  searchParams: any;
 };
 
-export default function StudentDetailPage({ params, searchParams }: StudentDetailPageProps) {
+export default function StudentDetailPage({ params }: StudentDetailPageProps) {
   const student = mockStudents.find((s) => s.id === params.id);
 
   if (!student) {
