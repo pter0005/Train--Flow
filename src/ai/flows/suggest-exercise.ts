@@ -10,6 +10,7 @@
  */
 
 import {ai} from '@/ai/genkit';
+import {googleAI} from '@genkit-ai/googleai';
 import {z} from 'genkit';
 
 const SuggestExerciseInputSchema = z.object({
@@ -59,7 +60,6 @@ Crie um nome para a ficha de treino e forneça uma breve justificativa para suas
   },
 );
 
-
 const suggestExerciseFlow = ai.defineFlow(
   {
     name: 'suggestExerciseFlow',
@@ -67,7 +67,7 @@ const suggestExerciseFlow = ai.defineFlow(
     outputSchema: SuggestExerciseOutputSchema,
   },
   async (input) => {
-    const { output } = await suggestExercisePrompt(input);
+    const { output } = await suggestExercisePrompt(input, { model: googleAI.model('gemini-1.5-pro-latest') });
     if (!output) {
       throw new Error('A IA não conseguiu gerar uma sugestão de exercício.');
     }
