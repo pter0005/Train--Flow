@@ -2,6 +2,10 @@ import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Adicionado para forçar a atualização do Git e resolver o problema de deploy
+  env: {
+    FORCE_REDEPLOY: new Date().toISOString(),
+  },
   images: {
     remotePatterns: [
       {
@@ -17,8 +21,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https'
-        ,
+        protocol: 'https',
         hostname: 'i.pravatar.cc',
         port: '',
         pathname: '/**',
