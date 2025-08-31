@@ -1,5 +1,5 @@
 'use server';
+import { defineNextHandler } from '@genkit-ai/next';
 import { ai } from '@/ai/genkit';
-import { nextHandler } from '@genkit-ai/next';
 
-export const { GET, POST } = nextHandler({ ai });
+export const { GET, POST } = defineNextHandler({ ai });
