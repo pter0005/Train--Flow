@@ -11,7 +11,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import ProgressChart from '@/components/dashboard/progress-chart';
 import StudentTrainingSheet from '@/components/dashboard/student-training-sheet';
 
-// Corrigido: O tipo das props da página foi ajustado para corresponder ao que o Next.js espera.
 interface StudentDetailPageProps {
   params: { id: string };
 };
