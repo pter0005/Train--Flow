@@ -6,9 +6,8 @@ import { mockStudents, mockExercises } from '@/lib/mock-data';
 import type { Student, TrainingSheet } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { FileText, Trash2, Wand2 } from 'lucide-react';
+import { FileText, PlusCircle, Trash2, Wand2 } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import AiExerciseSuggester from '@/components/dashboard/ai-exercise-suggester';
 
 interface StudentTrainingSheetProps {
   student: Student;
@@ -17,30 +16,37 @@ interface StudentTrainingSheetProps {
 export default function StudentTrainingSheet({ student: initialStudent }: StudentTrainingSheetProps) {
   const [student, setStudent] = useState<Student>(initialStudent);
 
-  const handleTrainingSheetCreated = (newSheet: TrainingSheet) => {
+  // This would ideally be a more robust way to create a training sheet, maybe a dialog/form.
+  const handleAddSheet = () => {
+    const newSheet: TrainingSheet = {
+      id: `ts-${Date.now()}`,
+      name: `Nova Ficha de Treino - ${new Date().toLocaleDateString()}`,
+      createdAt: new Date().toISOString(),
+      exercises: [],
+    };
+
     const updatedStudent = {
       ...student,
       trainingSheets: [...student.trainingSheets, newSheet]
     };
     setStudent(updatedStudent);
 
-    // This would typically be an API call to update the student data on the server
     const studentIndex = mockStudents.findIndex(s => s.id === student.id);
     if (studentIndex !== -1) {
       mockStudents[studentIndex] = updatedStudent;
     }
   };
 
+
   return (
     <Card>
       <CardHeader>
         <div className="flex justify-between items-center">
           <CardTitle className="font-headline">Fichas de Treino</CardTitle>
-          <AiExerciseSuggester 
-            student={student} 
-            exercises={mockExercises}
-            onTrainingSheetCreated={handleTrainingSheetCreated}
-          />
+          <Button onClick={handleAddSheet}>
+            <PlusCircle className="mr-2 h-4 w-4" />
+            Adicionar Ficha
+          </Button>
         </div>
         <CardDescription>
           Gerencie e atribua planos de treino para {student.name}.
@@ -72,16 +78,9 @@ export default function StudentTrainingSheet({ student: initialStudent }: Studen
         ) : (
           <div className="text-center py-12">
             <p className="text-muted-foreground">Nenhuma ficha de treino encontrada.</p>
-            <AiExerciseSuggester 
-              student={student} 
-              exercises={mockExercises}
-              onTrainingSheetCreated={handleTrainingSheetCreated}
-              openTrigger={
-                <Button className="mt-4">
-                  <Wand2 className="mr-2 h-4 w-4" /> Criar com IA
-                </Button>
-              }
-            />
+            <Button className="mt-4" onClick={handleAddSheet}>
+              <PlusCircle className="mr-2 h-4 w-4" /> Criar Primeira Ficha
+            </Button>
           </div>
         )}
       </CardContent>

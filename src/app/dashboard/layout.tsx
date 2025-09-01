@@ -30,7 +30,6 @@ const navItems = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'Painel' },
   { href: '/dashboard/students', icon: Users, label: 'Alunos' },
   { href: '/dashboard/exercises', icon: Dumbbell, label: 'Exercícios' },
-  { href: '/dashboard/ai-builder', icon: Wand2, label: 'Montador IA' },
   { href: '/dashboard/schedule', icon: CalendarDays, label: 'Agenda' },
 ];
 
