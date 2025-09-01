@@ -11,11 +11,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import ProgressChart from '@/components/dashboard/progress-chart';
 import StudentTrainingSheet from '@/components/dashboard/student-training-sheet';
 
-interface StudentDetailPageProps {
-  params: { id: string };
-};
-
-export default function StudentDetailPage({ params }: StudentDetailPageProps) {
+// Ajuste para corrigir o erro de build do Netlify
+export default function StudentDetailPage({ params }: { params: { id: string } }) {
   const student = mockStudents.find((s) => s.id === params.id);
 
   if (!student) {
