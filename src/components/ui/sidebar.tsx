@@ -431,13 +431,11 @@ SidebarGroup.displayName = "SidebarGroup"
 const SidebarGroupLabel = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & { asChild?: boolean }
->(({ className, asChild = false, ...props }, ref) => {
+>(({ className, asChild = false, ...props }, ref: React.Ref<HTMLDivElement>) => {
   const Comp = asChild ? Slot : "div"
-  const divRef = React.useRef<HTMLDivElement>(null);
 
   return (
     <Comp
-      ref={divRef}
       data-sidebar="group-label"
       className={cn(
         "duration-200 flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 outline-none ring-sidebar-ring transition-[margin,opa] ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
@@ -445,6 +443,7 @@ const SidebarGroupLabel = React.forwardRef<
         className
       )}
       {...props}
+      ref={ref}
     />
   )
 })
