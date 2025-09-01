@@ -11,8 +11,12 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import ProgressChart from '@/components/dashboard/progress-chart';
 import StudentTrainingSheet from '@/components/dashboard/student-training-sheet';
 
-// Ajuste para corrigir o erro de build do Netlify
-export default function StudentDetailPage({ params }: { params: { id: string } }) {
+// Corrigido: O tipo das props da página foi ajustado para corresponder ao que o Next.js espera.
+interface StudentDetailPageProps {
+  params: { id: string };
+};
+
+export default function StudentDetailPage({ params }: StudentDetailPageProps) {
   const student = mockStudents.find((s) => s.id === params.id);
 
   if (!student) {
