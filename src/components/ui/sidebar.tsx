@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -434,6 +435,7 @@ const SidebarGroupLabel = React.forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <div
+      ref={ref}
       data-sidebar="group-label"
       className={cn(
         "duration-200 flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 outline-none ring-sidebar-ring transition-[margin,opa] ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
@@ -441,7 +443,6 @@ const SidebarGroupLabel = React.forwardRef<
         className
       )}
       {...props}
-      ref={ref}
     />
   );
 })
@@ -449,13 +450,11 @@ SidebarGroupLabel.displayName = "SidebarGroupLabel"
 
 const SidebarGroupAction = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<"button"> & { asChild?: boolean; showOnHover?: boolean }
->(({ className, asChild = false, showOnHover, ...props }, ref) => {
-  const Comp = asChild ? Slot : "button"
-
+  React.ComponentProps<"button"> & { showOnHover?: boolean }
+>(({ className, showOnHover, ...props }, ref) => {
   return (
-    <Comp
-      ref={ref as React.Ref<HTMLButtonElement>}
+    <button
+      ref={ref}
       data-sidebar="group-action"
       className={cn(
         "absolute right-3 top-3.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 peer-hover/menu-button:text-sidebar-accent-foreground [&>svg]:size-4 [&>svg]:shrink-0",
@@ -764,3 +763,5 @@ export {
   SidebarTrigger,
   useSidebar,
 }
+
+    
